@@ -113,6 +113,47 @@ if (canvas) {
   requestAnimationFrame(animate);
 }
 
+const quoteForm = document.querySelector('.quote-form');
+
+if (quoteForm) {
+  const status = quoteForm.querySelector('.form-status');
+  const submitButton = quoteForm.querySelector('button[type="submit"]');
+  const ajaxUrl = quoteForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+  function setStatus(message, type) {
+    status.textContent = message;
+    status.classList.toggle('is-success', type === 'success');
+    status.classList.toggle('is-error', type === 'error');
+  }
+
+  quoteForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    submitButton.disabled = true;
+    setStatus('Enviando su solicitud...', '');
+
+    try {
+      const response = await fetch(ajaxUrl, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(quoteForm),
+      });
+      const result = await response.json();
+
+      if (!response.ok || result.success === 'false' || result.success === false) {
+        throw new Error(result.message || 'Error al enviar');
+      }
+
+      quoteForm.reset();
+      setStatus('¡Gracias! Recibimos su solicitud y nos pondremos en contacto con usted pronto.', 'success');
+    } catch (error) {
+      setStatus('No pudimos enviar su solicitud. Inténtelo de nuevo o llámenos al (01-867) 717 4107.', 'error');
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
+
 const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
 const heroDots = Array.from(document.querySelectorAll('.slider-dot'));
 const heroSlider = document.querySelector('.hero-slider');
