@@ -287,7 +287,7 @@
         <div class="container banner-box">
           <div>
             <p class="eyebrow alt">¿Necesita mejorar su seguridad?</p>
-            <h2>Hable con un especialista en protección contra incendios hoy mismo.</h2>
+            <h2>Póngase en contacto con nuestro equipo y le atenderemos a la brevedad.</h2>
           </div>
           <a href="#contact" class="btn btn-primary">Agendar consulta</a>
         </div>
@@ -339,24 +339,33 @@
             </ul>
           </div>
 
-          <form class="quote-form">
+          <form
+            class="quote-form"
+            action="https://formsubmit.co/leonse.extintores@leonse.com.mx"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="Nueva solicitud de cotización desde la página web" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <label>
               Nombre completo
-              <input type="text" placeholder="Su nombre" />
+              <input type="text" name="Nombre" placeholder="Su nombre" required />
             </label>
             <label>
               Correo electrónico
-              <input type="email" placeholder="usuario@ejemplo.com" />
+              <input type="email" name="email" placeholder="usuario@ejemplo.com" required />
             </label>
             <label>
               Tipo de negocio
-              <input type="text" placeholder="Oficina, almacén, restaurante..." />
+              <input type="text" name="Tipo de negocio" placeholder="Oficina, almacén, restaurante..." required />
             </label>
             <label>
               Requisitos
-              <textarea rows="4" placeholder="Cuéntenos lo que necesita"></textarea>
+              <textarea name="Requisitos" rows="4" placeholder="Cuéntenos lo que necesita" required></textarea>
             </label>
             <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>
