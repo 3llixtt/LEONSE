@@ -660,6 +660,31 @@ canvas {
   border-color: rgba(217, 60, 46, 0.45);
 }
 
+.form-honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.form-status {
+  margin: 0;
+  font-weight: 600;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status.is-success {
+  color: #15803d;
+}
+
+.form-status.is-error {
+  color: #b91c1c;
+}
+
 .site-footer {
   padding: 28px 0;
   background: linear-gradient(180deg, #111315 0%, #0a0b0d 100%);
