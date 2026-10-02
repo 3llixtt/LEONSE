@@ -113,6 +113,30 @@ if (canvas) {
   requestAnimationFrame(animate);
 }
 
+const themeToggle = document.querySelector('.theme-toggle');
+
+if (themeToggle) {
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    const label = theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('title', label);
+  }
+
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+  themeToggle.addEventListener('click', () => {
+    const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+
+    try {
+      localStorage.setItem('theme', nextTheme);
+    } catch (error) {
+      console.warn('No se pudo guardar el tema:', error);
+    }
+  });
+}
+
 const quoteForm = document.querySelector('.quote-form');
 
 if (quoteForm) {
@@ -149,7 +173,7 @@ if (quoteForm) {
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
       const detail = error.message ? ` (${error.message})` : '';
-      setStatus(`No pudimos enviar su solicitud${detail}. Inténtelo de nuevo o llámenos al (01-867) 717 4107.`, 'error');
+      setStatus(`No pudimos enviar su solicitud${detail}. Inténtelo de nuevo o llámenos al 867 116 6556 o al 867 717 4107.`, 'error');
     } finally {
       submitButton.disabled = false;
     }
