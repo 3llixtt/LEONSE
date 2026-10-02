@@ -16,6 +16,18 @@
     />
     <link rel="icon" type="image/png" href="logo.png" />
     <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (error) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
   </head>
   <body>
     <header class="topbar">
@@ -34,14 +46,18 @@
         <nav class="main-nav" aria-label="Navegación principal">
           <a href="#home">Inicio</a>
           <a href="#products">Productos</a>
-          <a href="#services">Servicios</a>
           <a href="catalogo-leonse-2023.pdf" target="_blank" rel="noopener">Catálogo</a>
           <a href="#about">Nosotros</a>
-          <a href="#standards">Normas</a>
           <a href="#contact">Contacto</a>
         </nav>
 
-        <a class="btn btn-primary" href="#contact">Solicitar cotización</a>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">
+            <span class="theme-icon-dark" aria-hidden="true">☾</span>
+            <span class="theme-icon-light" aria-hidden="true">☀</span>
+          </button>
+          <a class="btn btn-primary" href="#contact">Solicitar cotización</a>
+        </div>
       </div>
     </header>
 
@@ -185,7 +201,7 @@
             <a class="btn btn-primary" href="CATALOGO%20GENERAL%20LEONSE_c.pdf" target="_blank" rel="noopener">
               Catálogo de equipo y señalamientos (PDF)
             </a>
-            <a class="btn btn-secondary" href="catalogo-leonse-2023.pdf" target="_blank" rel="noopener">
+            <a class="btn btn-accent" href="catalogo-leonse-2023.pdf" target="_blank" rel="noopener">
               Catálogo de extintores (PDF)
             </a>
           </div>
@@ -256,7 +272,47 @@
       </section>
 
       <section id="about" class="process section-spacing">
-        <div class="container process-grid">
+        <div class="container">
+          <div class="section-heading narrow about-intro">
+            <p class="eyebrow">Nosotros</p>
+            <h2>¿Quiénes somos?</h2>
+            <p>
+              Leonse es una empresa dedicada a la protección contra incendios. Vendemos, damos
+              mantenimiento y recargamos extintores, y ofrecemos equipo de bomberos y señalamientos
+              de seguridad para empresas comerciales, corporativas e industriales.
+            </p>
+            <p>
+              Trabajamos de cerca con cada cliente para recomendar el equipo adecuado a su
+              instalación y mantenerlo listo para cuando más se necesite, con apego a las normas vigentes.
+            </p>
+          </div>
+
+          <h3 class="mission-title">Misión y visión</h3>
+
+          <div class="mission-grid">
+            <article class="mission-card">
+              <div class="mission-icon" aria-hidden="true">🎯</div>
+              <h3>Misión</h3>
+              <p>
+                Proteger la vida de las personas y el patrimonio de nuestros clientes mediante
+                la venta, mantenimiento y recarga de extintores, equipo de bomberos y señalamientos
+                de seguridad, brindando un servicio confiable, oportuno y apegado a las normas vigentes.
+              </p>
+            </article>
+
+            <article class="mission-card">
+              <div class="mission-icon" aria-hidden="true">🔭</div>
+              <h3>Visión</h3>
+              <p>
+                Ser la empresa líder y de mayor confianza en protección contra incendios de la región,
+                reconocida por la calidad de nuestros productos, la atención cercana a cada cliente
+                y nuestro compromiso con una cultura de prevención y seguridad.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="container process-grid about-process">
           <div class="process-copy">
             <p class="eyebrow">Nuestro proceso</p>
             <h2>Desde la evaluación hasta la instalación, cuidamos cada paso.</h2>
@@ -344,7 +400,20 @@
               apoyo completo para la instalación, nuestro equipo está listo para ayudarle.
             </p>
             <ul class="contact-list">
-              <li>📞 (01-867) 717 4107</li>
+              <li>
+                📞 <a href="tel:+528671166556">867 116 6556</a>
+                <a
+                  class="contact-whatsapp"
+                  href="https://wa.me/528671166556"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Escribir por WhatsApp al 867 116 6556"
+                  title="Escribir por WhatsApp"
+                >
+                  <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="" aria-hidden="true" />
+                </a>
+              </li>
+              <li>📞 <a href="tel:+528677174107">867 717 4107</a></li>
               <li>✉️ leonse.extintores@leonse.com.mx</li>
             </ul>
           </div>
