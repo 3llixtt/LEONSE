@@ -710,6 +710,29 @@ canvas {
   line-height: 1.8;
 }
 
+.values-title {
+  margin-top: 56px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.value-card {
+  padding: 28px 26px;
+}
+
+.value-card h3 {
+  font-size: 1.3rem;
+}
+
+.value-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
 .cta-banner {
   padding-top: 0;
 }
@@ -1007,6 +1030,10 @@ canvas {
   .feature-grid {
     grid-template-columns: 1fr;
   }
+
+  .values-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1017,6 +1044,7 @@ canvas {
   .solution-grid,
   .standards-grid,
   .mission-grid,
+  .values-grid,
   .stats-grid,
   .feature-grid {
     grid-template-columns: 1fr;
